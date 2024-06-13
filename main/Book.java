@@ -1,6 +1,6 @@
 package main;
 
-public class Book {
+public class Book implements Comparable<Book> {
     private int id;
     private String title;
     private String author;
@@ -29,6 +29,7 @@ public class Book {
         return id;
     }
 
+    // 출력을 위한 toString 매서드 구현
     @Override
     public String toString() {
         return "Book{" +
@@ -37,5 +38,11 @@ public class Book {
                 "저자: '" + author + "', " +
                 "출판년도: " + year +
                 '}';
+    }
+
+    // binarySearch를 위한 id값으로 비교하는 compreTo 매서드 구현
+    @Override
+    public int compareTo(Book book) {
+        return Integer.compare(this.id, book.id);
     }
 }
