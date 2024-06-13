@@ -23,8 +23,9 @@ pipeline {
             }
 
                  // test_results.txt 파일을 UTF-8 인코딩으로 저장
-                script {
-                    writeFile file: 'test_results.txt', text: readFile('test_results.txt').trim(), encoding: 'UTF-8'
+
+                writeFile file: 'test_results.txt', encoding: 'UTF-8', write: {
+                readFile('test_results.txt').trim()
                 }
         }
     }
