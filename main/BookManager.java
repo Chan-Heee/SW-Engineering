@@ -11,6 +11,10 @@ public class BookManager {
         this.books = new ArrayList<>();
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     // 매개변수로 book에 대한 정보를 받는다.
     public void addBook(Book book) {
 
