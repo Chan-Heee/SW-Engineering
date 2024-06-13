@@ -26,7 +26,7 @@ pipeline {
     }
     post {
         always {
-            archiveArtifacts archiveArtifacts 'test_results.txt'
+            archiveArtifacts artifacts: 'test_results.txt', allowEmptyArchive: true
         }
         failure {
             echo 'Build or test failed'
