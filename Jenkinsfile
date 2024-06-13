@@ -21,12 +21,6 @@ pipeline {
                 // JUnit 5 테스트 실행
                 sh "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt"
             }
-
-                 // test_results.txt 파일을 UTF-8 인코딩으로 저장
-
-                writeFile file: 'test_results.txt', encoding: 'UTF-8', write: {
-                readFile('test_results.txt').trim()
-                }
         }
     }
     post {
