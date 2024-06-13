@@ -1,5 +1,6 @@
 // JUnit 5 테스트를 위한 경로 변수 구성
 def classpath = "classes:lib/junit-platform-console-standalone-1.7.1.jar"
+
 pipeline {
     agent any
     stages {
