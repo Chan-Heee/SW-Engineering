@@ -16,7 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                  sh '''
-                     java -cp "path/to/junit-platform-console-standalone.jar:classes" \
+                     java -cp "./junit-platform-console-standalone.jar:classes" \
                      org.junit.platform.console.ConsoleLauncher \
                      --class-path classes \
                      --scan-class-path
