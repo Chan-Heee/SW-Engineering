@@ -14,6 +14,7 @@ pipeline {
             steps {
                 // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
                 sh 'javac -encoding UTF-8 -d classes main/*.java'
+                sh 'javac -encoding UTF-8 -d classes test/*.java'
             }
         }
         stage('Test') {
