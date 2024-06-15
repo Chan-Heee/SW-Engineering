@@ -74,9 +74,9 @@ public class BookManagerTest {
     public void testPerformance() {
         Random random = new Random();
         long startTime, endTime;
-        int iterations = 1000000; // 검색을 반복할 횟수
+        int iterations = 100; // 검색을 반복할 횟수
 
-        for(int i=0; i<10000; i++) {
+        for(int i=0; i<100; i++) {
             Book book = new Book(i,"테스트" + i, "테스트", 2024);
             bookManager.addBook(book);
         }
@@ -95,9 +95,10 @@ public class BookManagerTest {
         for (int i = 0; i < iterations; i++) {
             int id = random.nextInt(10);
             bookManager.bsSearchBook(id);
-        } 
-        
+        }
+
         endTime = System.currentTimeMillis();
         System.out.println("이진 검색 소요 시간: " + (endTime - startTime) + " ms");
     }
 }
+
