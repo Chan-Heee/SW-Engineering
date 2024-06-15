@@ -13,8 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                 // Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
-                sh 'javac -encoding UTF-8 -d classes main/*.java'
-                sh 'javac -encoding UTF-8 -d classes test/*.java'
+                sh 'javac -encoding UTF-8 -classpath ./lib/junit-jupiter-api-5.8.1.jar -d classes main/Book.java main/BookManager.java'
+                sh 'javac -encoding UTF-8 -classpath ./lib/junit-jupiter-api-5.8.1.jar:./classes -d classes test/BookManagerTest.java'
             }
         }
         stage('Test') {
