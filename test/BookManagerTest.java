@@ -4,6 +4,9 @@ import main.Book;
 import main.BookManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BookManagerTest {
@@ -65,5 +68,36 @@ public class BookManagerTest {
         assertEquals(1, bookManager.getBooks().size());
         // 없는 book을 삭제 하려고 하면 예외가 발생해야 한다.
         assertThrows(IllegalArgumentException.class, () -> bookManager.removeBook(book3));
+    }
+
+    @Test
+    public void testPerformance() {
+        Random random = new Random();
+        long startTime, endTime;
+        int iterations = 1000000; // 검색을 반복할 횟수
+
+        for(int i=0; i<10000; i++) {
+            Book book = new Book(i,"테스트" + i, "테스트", 2024);
+            bookManager.addBook(book);
+        }
+
+        // 순차 검색 성능 측정
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            int id = random.nextInt(10); // 임의의 id 선택 (0~9)
+            bookManager.searchBook(id);
+        }
+        endTime = System.currentTimeMillis();
+        System.out.println("순차 검색 소요 시간: " + (endTime - startTime) + " ms");
+
+        // 이진 검색 성능 측정
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            int id = random.nextInt(10);
+            bookManager.bsSearchBook(id);
+        } 
+        
+        endTime = System.currentTimeMillis();
+        System.out.println("이진 검색 소요 시간: " + (endTime - startTime) + " ms");
     }
 }
