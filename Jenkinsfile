@@ -3,6 +3,12 @@ def classpath = "classes:lib/junit-platform-console-standalone-1.7.1.jar"
 
 pipeline {
     agent any
+
+    environment {
+            LC_ALL = 'ko_KR.UTF-8'
+            LANG = 'ko_KR.UTF-8'
+        }
+
     stages {
         stage('Checkout') {
             steps {
